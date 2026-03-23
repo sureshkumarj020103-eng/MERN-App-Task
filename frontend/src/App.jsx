@@ -47,7 +47,7 @@ export default function App() {
 
   const fetchHistory = useCallback(async () => {
     try {
-      const res = await fetch('/api/history');
+      const res = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/history');
       if (!res.ok) throw new Error('History fetch failed');
       const data = await res.json();
       setHistory(data);
@@ -69,7 +69,7 @@ export default function App() {
     setStatus('Sending prompt to backend...');
 
     try {
-      const response = await fetch('/api/ask-ai', {
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/ask-ai', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt })
@@ -95,7 +95,7 @@ export default function App() {
       return;
     }
     try {
-      const response = await fetch('/api/save', {
+      const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/api/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt, response: answer })
