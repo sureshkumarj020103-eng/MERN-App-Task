@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const OpenAI = require('openai');
 const dotenv = require('dotenv');
 const rateLimit = require('express-rate-limit');
-const Query = require('../models/Query');
+const Query = require('./models/Query');
 
 dotenv.config();
 
